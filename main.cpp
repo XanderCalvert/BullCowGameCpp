@@ -2,6 +2,7 @@
 This acts as the view in a MVC patternm, and is responsible for all
 user interaction. For the game logic see the FBullCowGame class.*/
 
+#pragma once
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
@@ -61,7 +62,7 @@ void playGame() {
 	// Loop asking for guesses while the game is NOT won
 	// and there are still tries remaining
 	while(!BCGame.IsGameWon() && BCGame.GetCurrentTry() <= MaxTries) {
-		FText Guess = GetValidGuess(); // TODO make loop check valid
+		FText Guess = GetValidGuess();
 
 
 

@@ -1,3 +1,6 @@
+/* The game logic (no view code or direct user interaction)
+The game is a simple guess the word game based on Mastermind */
+
 #pragma once
 #include <string>
 
@@ -25,10 +28,10 @@ public:
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
 	bool IsGameWon() const;
-	EGuessStatus CheckGuessValidity(FString) const; // TODO make a more rich return value.
+	EGuessStatus CheckGuessValidity(FString) const;
 	
 
-	void Reset(); // TODO make a more rich return value.
+	void Reset();
 
 	// Counts Bulls and Cows and increases try number, assuming valid guess.
 	FBullCowCount SubmitValidGuess(FString);
@@ -36,7 +39,6 @@ public:
 private:
 	// See constructor for initialisation
 	int32 MyCurrentTry;
-	int32 MyMaxTries;
 	FString MyHiddenWord;
 	bool bGameIsWon;
 

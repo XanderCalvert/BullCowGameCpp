@@ -1,20 +1,22 @@
+#pragma once
 #include "FBullCowGame.h"
 #include <map>
 #define TMap std::map
 
-int FBullCowGame::GetMaxTries() const {	return MyMaxTries; }
+FBullCowGame::FBullCowGame() { Reset(); } // default constructor
+
 int FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const { return MyHiddenWord.length(); }
 bool FBullCowGame::IsGameWon() const { return bGameIsWon; }
 
-FBullCowGame::FBullCowGame() {
-	Reset();
+int FBullCowGame::GetMaxTries() const { 
+	TMap<int32, int32> WordLengthToMaxTries{ {3,4}, {4,7}, {5,10}, {6,16}, {7,20} };
+	return WordLengthToMaxTries[MyHiddenWord.length()];
 }
 
 void FBullCowGame::Reset() {
-	constexpr int32 maxTries = 8;
-	MyMaxTries = maxTries;
-	const FString hiddenWord = "planet";
+
+	const FString hiddenWord = "planet"; // this MUST be an isogram
 	MyHiddenWord = hiddenWord;
 	MyCurrentTry = 1;
 	bGameIsWon = false; 
